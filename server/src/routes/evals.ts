@@ -8,7 +8,7 @@ const router = express.Router();
 const RunDirectEvalSchema = z.object({
   content: z.string(),
   models: z.array(z.string()),
-  inputs: z.record(z.any()).optional(),
+  inputs: z.record(z.string(), z.any()).optional(),
   expected_output: z.string().optional()
 });
 

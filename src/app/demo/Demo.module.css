@@ -497,25 +497,7 @@
   color: #6b7280;
 }
 
-.loginBtn {
-  width: 100%;
-  background-color: #ffffff;
-  color: #000000;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s;
-}
 
-.loginBtn:hover {
-  opacity: 0.9;
-}
 
 @keyframes spin {
   100% {

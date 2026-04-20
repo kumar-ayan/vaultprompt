@@ -14,7 +14,7 @@ const plans = [
       'Local-only processing',
     ],
     cta: 'Start for Free',
-    ctaHref: '/login',
+    ctaHref: '/demo',
     featured: false,
   },
   {
@@ -30,7 +30,7 @@ const plans = [
       'Engineering-grade metrics',
     ],
     cta: 'Get Started',
-    ctaHref: '/login',
+    ctaHref: '/demo',
     featured: true,
   },
   {

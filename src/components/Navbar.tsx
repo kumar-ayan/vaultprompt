@@ -3,14 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import type { User } from '@supabase/supabase-js';
 import styles from './Navbar.module.css';
 
-interface NavbarProps {
-  user?: User | null
-}
-
-export default function Navbar({ user }: NavbarProps) {
+export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
@@ -27,7 +22,8 @@ export default function Navbar({ user }: NavbarProps) {
   };
 
   return (
-    <nav className={classNames(styles.navbar, scrolled && styles.scrolled)}>
+    <nav className={classNames(styles.navbar, scrolled && styles.scrolled)} suppressHydrationWarning>
+      {/* suppressHydrationWarning is added to overcome Turbopack cache or browser extension DOM manipulations */}
       <div className={styles.logo}>
         <Link href="/">VaultPrompt</Link>
       </div>
@@ -35,15 +31,7 @@ export default function Navbar({ user }: NavbarProps) {
       <div className={styles.links}>
         <Link href="/" className={classNames(pathname === '/' && styles.activeLink)}>Why VaultPrompt</Link>
         <Link href="/features" className={classNames(pathname === '/features' && styles.activeLink)}>Features</Link>
-      </div>
-      
-      <div className={styles.actions}>
-        {user ? (
-          <Link href="/auth/signout">Logout</Link>
-        ) : (
-          <Link href="/login">Login</Link>
-        )}
-        <Link href="/demo" className={styles.tryDemoBtn}>See Live Demo</Link>
+        <Link href="/demo" className={classNames(pathname === '/demo' && styles.activeLink)}>Live Demo</Link>
       </div>
     </nav>
   );
