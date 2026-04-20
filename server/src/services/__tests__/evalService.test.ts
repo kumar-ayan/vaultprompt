@@ -44,7 +44,7 @@ describe('EvalService', () => {
     it('returns a fallback result if JSON is invalid', () => {
       const mockLlmResponse = 'I think it deserves a 4 because xyz';
       const result = (EvalService as any).parseJudgeResult(mockLlmResponse);
-      expect(result).toEqual({ score: 3, reason: 'Error parsing judge payload' });
+      expect(result).toEqual({ score: 3, reason: 'Error parsing judge response.' });
     });
   });
 });

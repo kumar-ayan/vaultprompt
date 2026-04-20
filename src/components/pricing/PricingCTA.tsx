@@ -5,10 +5,10 @@ export default function PricingCTA() {
   return (
     <section className={styles.section} aria-label="Call to action">
       <div className={styles.card}>
-        <h2 className={styles.title}>Ready to upgrade your workflow?</h2>
+        <h2 className={styles.title}>Ready to make the most of every event?</h2>
         <p className={styles.subtitle}>
-          Join thousands of engineers who trust VaultPrompt to secure their<br />
-          intellectual capital.
+          Join thousands of attendees who trust EventPilot to navigate events and<br />
+          maximize authentic connections.
         </p>
         <div className={styles.actions}>
           <Link href="/demo" id="cta-try-demo" className={styles.btnPrimary}>

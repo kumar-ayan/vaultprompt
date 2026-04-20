@@ -13,7 +13,7 @@ const faqs = [
     id: 'faq-versioning',
     question: 'How does the versioning work?',
     answer:
-      'Every time you update a prompt, VaultPrompt creates a cryptographic snapshot. You can diff versions, roll back, or branch different prompt strategies without losing context or historical performance data.',
+      'Every time you save a session plan, EventPilot creates a snapshot. You can revisit past plans, sessions you attended, or networking connections without losing context or historical data.',
   },
   {
     id: 'faq-upgrade',

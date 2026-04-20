@@ -8,7 +8,7 @@ export default function PrivacyPage() {
       <Navbar />
       <div style={{ padding: '4rem 2rem', maxWidth: '800px', margin: '0 auto' }}>
         <h1>Privacy</h1>
-        <p>Your privacy is our priority. VaultPrompt stores all prompt data locally in your browser. We do not store your prompts on our servers.</p>
+        <p>Your privacy is our priority. EventPilot stores all event plan data locally in your browser. We do not store your queries on our servers.</p>
       </div>
       <Footer />
     </main>

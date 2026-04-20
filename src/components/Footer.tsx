@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className={styles.footerWrapper}>
       <div className="container">
         <div className={styles.footer}>
-          <div>© 2026 VaultPrompt</div>
+          <div>© 2026 EventPilot</div>
           <div className={styles.links}>
             <Link href="/privacy">Privacy</Link>
             <Link href="/security">Security</Link>

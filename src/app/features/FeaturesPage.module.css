@@ -6,6 +6,13 @@
   font-family: var(--font-inter);
 }
 
+.hero {
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .breadcrumb {
   text-transform: uppercase;
   font-size: 0.75rem;

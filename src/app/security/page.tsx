@@ -8,7 +8,7 @@ export default function SecurityPage() {
       <Navbar />
       <div style={{ padding: '4rem 2rem', maxWidth: '800px', margin: '0 auto' }}>
         <h1>Security</h1>
-        <p>VaultPrompt is designed with a local-first architecture. Your prompts never leave your browser except when sent to LLM providers via our stateless proxy.</p>
+        <p>EventPilot is designed with a local-first architecture. Your event plans never leave your browser except when sent to LLM providers via our stateless proxy.</p>
       </div>
       <Footer />
     </main>

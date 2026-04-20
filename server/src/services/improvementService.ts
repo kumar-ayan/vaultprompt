@@ -1,61 +1,47 @@
 import { z } from 'zod';
 import DOMPurify from 'isomorphic-dompurify';
-import { unifiedChatCompletion } from './openaiClient';
+import { geminiChat } from './geminiClient';
 
-const ImprovedPromptSchema = z.object({
-  improved_prompt: z.string().describe('The completely rewritten, optimized prompt text.'),
-  analysis: z.array(z.string()).describe('A strict list of bullet points explaining exactly what changes were made and why.')
+const ImprovedQuerySchema = z.object({
+  improved_prompt: z.string().describe('The completely rewritten, optimized event query.'),
+  analysis: z.array(z.string()).describe('Bullet points explaining exactly what was improved and why.'),
 });
 
 export class ImprovementService {
   /**
-   * Applies the "Master Prompt Engineer" logic to completely rewrite and optimize a given prompt.
-   * This logic strongly relies on Gemini 1.5 Pro to execute complex reasoning.
+   * Applies the "Event Query Refiner" logic to optimize a vague event goal
+   * into a highly specific, actionable query using Gemini 1.5 Pro.
    */
   static async improvePrompt(content: string) {
-    const systemInstruction = `
-      You are the Master Prompt Engineer. 
-      Your task is to analyze the user's drafted prompt and completely rewrite it following industry-leading best practices.
-      
-      A great prompt should:
-      1. Clearly state the objective or role.
-      2. Set strict constraints (negative boundaries).
-      3. Define the desired output format explicitly.
-      4. Break complex instructions into granular steps.
-      
-      Review the user's current draft below. Then, provide an updated highly-effective version.
+    const systemInstruction = `You are the EventPilot Query Refiner — powered by Google Gemini.
+Your task is to analyze a user's vague event goal and rewrite it into a highly specific, actionable event query.
 
-      Current Draft:
-      ---
-      ${content}
-      ---
-      
-      You must respond in JSON strictly matching this schema:
-      {
-        "improved_prompt": "The completely rewritten, optimized prompt text.",
-        "analysis": ["Added explicit constraints regarding length", "Defined a clear JSON output format"]
-      }
-    `;
+A great event query should:
+1. Clearly state the attendee's primary objective (networking, learning, exploring, etc.).
+2. Define specific domains, topics, or technologies of interest.
+3. Specify any time constraints or schedule blocks available.
+4. Ask for targeted session, speaker, and networking recommendations.
 
-    try {
-      const response = await unifiedChatCompletion(
-        {
-          model: 'gemini-1.5-pro-latest', // Prioritize Gemini for its large context window and strong reasoning
-          messages: [{ role: 'user', content: systemInstruction }],
-          response_format: { type: 'json_object' }
-        },
-        { timeout: 30000 }
-      );
+Current Draft:
+---
+${content}
+---
 
-      const responseText = response.choices[0]?.message?.content?.trim() || '{}';
-      const cleaned = responseText.replace(/```json\n?|\n?```/g, '').trim();
-      
-      const result = ImprovedPromptSchema.parse(JSON.parse(cleaned));
-      result.improved_prompt = DOMPurify.sanitize(result.improved_prompt);
-      return result;
-    } catch (error) {
-      console.error('ImprovementService failed to optimize prompt:', error);
-      throw new Error('Failed to run Master Prompt Engineer improvement flow.');
-    }
+Respond ONLY in this exact JSON format (no markdown, no extra text):
+{
+  "improved_prompt": "The rewritten, highly specific event query",
+  "analysis": ["Improvement 1", "Improvement 2"]
+}`;
+
+    const raw = await geminiChat(
+      [{ role: 'user', content: systemInstruction }],
+      'gemini-1.5-pro-latest',
+      30000
+    );
+
+    const cleaned = raw.replace(/```json\n?|\n?```/g, '').trim();
+    const result = ImprovedQuerySchema.parse(JSON.parse(cleaned));
+    result.improved_prompt = DOMPurify.sanitize(result.improved_prompt);
+    return result;
   }
 }

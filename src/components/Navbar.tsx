@@ -25,11 +25,11 @@ export default function Navbar() {
     <nav className={classNames(styles.navbar, scrolled && styles.scrolled)} suppressHydrationWarning>
       {/* suppressHydrationWarning is added to overcome Turbopack cache or browser extension DOM manipulations */}
       <div className={styles.logo}>
-        <Link href="/">VaultPrompt</Link>
+        <Link href="/">EventPilot</Link>
       </div>
       
       <div className={styles.links}>
-        <Link href="/" className={classNames(pathname === '/' && styles.activeLink)}>Why VaultPrompt</Link>
+        <Link href="/" className={classNames(pathname === '/' && styles.activeLink)}>Why EventPilot</Link>
         <Link href="/features" className={classNames(pathname === '/features' && styles.activeLink)}>Features</Link>
         <Link href="/demo" className={classNames(pathname === '/demo' && styles.activeLink)}>Live Demo</Link>
       </div>

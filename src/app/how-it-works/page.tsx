@@ -9,7 +9,7 @@ export default function HowItWorksPage() {
       <Navbar />
       <div className={styles.hero}>
         <h1>How It Works</h1>
-        <p>Learn how VaultPrompt helps you engineer better prompts.</p>
+        <p>Learn how EventPilot helps you navigate physical events and maximize your experience.</p>
       </div>
       <Footer />
     </main>

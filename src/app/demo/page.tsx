@@ -51,13 +51,13 @@ export default function DemoPage() {
             </svg>
           </div>
           <div className={styles.brandText}>
-            <h2>VaultPrompt</h2>
-            <span>ENTERPRISE VAULT</span>
+            <h2>EventPilot</h2>
+            <span>EVENT COPILOT</span>
           </div>
         </Link>
 
         <button className={styles.newPromptBtn} onClick={handleCreatePrompt} type="button">
-          + New Prompt
+          + New Session
         </button>
 
         <nav className={styles.navMenu}>

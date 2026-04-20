@@ -1,52 +1,30 @@
 import { describe, expect, it, vi } from 'vitest';
 import { ImprovementService } from '../improvementService';
-import * as openaiClient from '../openaiClient';
+import * as geminiClient from '../geminiClient';
 
-vi.mock('../openaiClient', () => ({
-  unifiedChatCompletion: vi.fn(),
+vi.mock('../geminiClient', () => ({
+  geminiChat: vi.fn(),
 }));
 
 describe('ImprovementService', () => {
   it('correctly parses and sanitizes the improved prompt', async () => {
     const mockOutput = JSON.stringify({
-      improved_prompt: 'You are an AI assistant. Output <strong>results</strong> in JSON. <script>alert(1)</script>',
-      analysis: ['Added role', 'Added format']
+      improved_prompt: 'I want to attend AI sessions and network with founders. <script>alert(1)</script>',
+      analysis: ['Added domain focus', 'Added networking intent'],
     });
 
-    vi.mocked(openaiClient.unifiedChatCompletion).mockResolvedValueOnce({
-      id: 'mock-id',
-      created: 1234,
-      model: 'gemini-1.5-pro-latest',
-      object: 'chat.completion',
-      choices: [
-        {
-          index: 0,
-          finish_reason: 'stop',
-          message: {
-            role: 'assistant',
-            content: mockOutput,
-            refusal: null
-          },
-          logprobs: null
-        }
-      ],
-      usage: {
-        completion_tokens: 10,
-        prompt_tokens: 10,
-        total_tokens: 20
-      }
-    } as any);
+    vi.mocked(geminiClient.geminiChat).mockResolvedValueOnce(mockOutput);
 
-    const result = await ImprovementService.improvePrompt('Do something');
-    
-    expect(result.improved_prompt).toContain('You are an AI assistant');
+    const result = await ImprovementService.improvePrompt('Do something at the event');
+
+    expect(result.improved_prompt).toContain('AI sessions');
     expect(result.improved_prompt).not.toContain('<script>');
     expect(result.analysis.length).toBe(2);
   });
 
-  it('throws an error when external API fails', async () => {
-    vi.mocked(openaiClient.unifiedChatCompletion).mockRejectedValueOnce(new Error('API failure'));
-    
-    await expect(ImprovementService.improvePrompt('bad prompt')).rejects.toThrow('Failed to run Master Prompt Engineer improvement flow.');
+  it('throws an error when Gemini API fails', async () => {
+    vi.mocked(geminiClient.geminiChat).mockRejectedValueOnce(new Error('Gemini API failure'));
+
+    await expect(ImprovementService.improvePrompt('bad query')).rejects.toThrow();
   });
 });

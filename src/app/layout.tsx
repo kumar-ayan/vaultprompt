@@ -9,22 +9,22 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 const Particles = dynamic(() => import('@/components/Particles'));
 
 export const metadata: Metadata = {
-  title: 'VaultPrompt | Prompt Engineering DevTool & Versioning',
-  description: 'The ultimate devtool for prompt engineering. Score, version, and refine your AI prompts before you waste tokens. Optimized for OpenAI, Anthropic, and more.',
-  keywords: ['prompt engineering', 'prompt version control', 'AI development tools', 'LLM optimization', 'VaultPrompt'],
-  authors: [{ name: 'VaultPrompt Team' }],
+  title: 'EventPilot | AI Copilot for Physical Events',
+  description: 'Your AI-powered copilot for physical events. Navigate sessions, build your schedule, and network smarter in real time.',
+  keywords: ['event ai copilot', 'event planning', 'conference assistant', 'networking ai', 'EventPilot'],
+  authors: [{ name: 'EventPilot Team' }],
   openGraph: {
-    title: 'VaultPrompt | Prompt Engineering DevTool',
-    description: 'Score, version, and refine your prompts before you waste tokens.',
-    url: 'https://vaultprompt.com',
-    siteName: 'VaultPrompt',
+    title: 'EventPilot | AI Copilot for Physical Events',
+    description: 'Navigate sessions, build your schedule, and network smarter in real time.',
+    url: 'https://eventpilot.app',
+    siteName: 'EventPilot',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'VaultPrompt | Prompt Engineering DevTool',
-    description: 'Score, version, and refine your prompts before you waste tokens.',
+    title: 'EventPilot | AI Copilot for Physical Events',
+    description: 'Navigate sessions, build your schedule, and network smarter in real time.',
   },
   robots: {
     index: true,
@@ -40,9 +40,9 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: 'VaultPrompt',
-    description: 'The ultimate devtool for prompt engineering. Score, version, and refine your AI prompts.',
-    url: 'https://vaultprompt.com',
+    name: 'EventPilot',
+    description: 'AI-powered copilot for physical events. Navigate sessions, connect with people, and maximize your experience.',
+    url: 'https://eventpilot.app',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Any',
     offers: {
