@@ -139,6 +139,28 @@ export function usePromptManager() {
     }
   };
 
+  const handleExport = () => {
+    const data = localHistory.exportHistory();
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `vaultprompt-history-${new Date().toISOString().split('T')[0]}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImport = async (file: File) => {
+    try {
+      const text = await file.text();
+      localHistory.importHistory(text);
+      refreshSavedPrompts();
+      alert('Prompts imported successfully!');
+    } catch (e) {
+      alert(e instanceof Error ? e.message : 'Import failed');
+    }
+  };
+
   return {
     promptText, setPromptText,
     metrics, setMetrics,
@@ -153,6 +175,8 @@ export function usePromptManager() {
     handleCreatePrompt,
     handleSelectPrompt,
     handleSave, handleAnalyze, handleImprove,
-    handleMultiModelEval
+    handleMultiModelEval,
+    handleExport,
+    handleImport
   };
 }

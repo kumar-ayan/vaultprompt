@@ -103,6 +103,28 @@ export const localHistory = {
     this.persist(prompts);
   },
 
+  exportHistory(): string {
+    const prompts = this.getPrompts();
+    return JSON.stringify(prompts, null, 2);
+  },
+
+  importHistory(jsonData: string): void {
+    try {
+      const imported = JSON.parse(jsonData) as LocalPrompt[];
+      if (!Array.isArray(imported)) throw new Error('Invalid format');
+      
+      const current = this.getPrompts();
+      const currentIds = new Set(current.map(p => p.id));
+      
+      // Merge: only add prompts that don't already exist by ID
+      const toAdd = imported.filter(p => !currentIds.has(p.id));
+      this.persist([...current, ...toAdd]);
+    } catch (e) {
+      console.error('Import failed:', e);
+      throw new Error('Failed to import: Invalid JSON file format.');
+    }
+  },
+
   persist(prompts: LocalPrompt[]): void {
     if (typeof window !== 'undefined') {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(prompts));

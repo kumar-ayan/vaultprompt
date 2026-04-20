@@ -21,8 +21,12 @@ export default function DemoPage() {
     handleCreatePrompt,
     handleSelectPrompt,
     handleSave, handleAnalyze, handleImprove,
-    handleMultiModelEval
+    handleMultiModelEval,
+    handleExport,
+    handleImport
   } = usePromptManager();
+
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const filteredPrompts = savedPrompts.filter((prompt) =>
     prompt.prompt_versions[0]?.content?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -70,6 +74,36 @@ export default function DemoPage() {
             Analytics
           </a>
         </nav>
+
+        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <button 
+            className={styles.toolbarBtn} 
+            onClick={handleExport}
+            style={{ width: '100%', justifyContent: 'center', background: 'rgba(255,255,255,0.03)' }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Export Backup
+          </button>
+          <button 
+            className={styles.toolbarBtn} 
+            onClick={() => fileInputRef.current?.click()}
+            style={{ width: '100%', justifyContent: 'center', background: 'rgba(255,255,255,0.03)' }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Import JSON
+          </button>
+          <input 
+            type="file" 
+            ref={fileInputRef} 
+            style={{ display: 'none' }} 
+            accept=".json" 
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) handleImport(file);
+              e.target.value = ''; // Reset
+            }}
+          />
+        </div>
       </aside>
 
       {/* MAIN CONTENT */}

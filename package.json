@@ -12,8 +12,7 @@
     "test": "vitest run server/src/services/__tests__/promptService.test.ts server/src/lib/__tests__/request.test.ts src/utils/url.test.ts --pool=threads"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.10.0",
-    "@supabase/supabase-js": "^2.102.1",
+    "@google/generative-ai": "^0.24.1",
     "@vercel/analytics": "^2.0.1",
     "axios": "^1.15.0",
     "cors": "^2.8.6",

@@ -6,13 +6,12 @@ dotenv.config();
 const EnvSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().min(1).max(65535).default(3001),
-  SUPABASE_URL: z.url(),
-  SUPABASE_KEY: z.string().min(1),
   OPENROUTER_API_KEY: z.string().min(1).optional(),
   GROQ_API_KEY: z.string().min(1).optional(),
+  GEMINI_API_KEY: z.string().min(1).optional(),
   ALLOWED_ORIGINS: z.string().default('http://localhost:3000'),
   SITE_URL: z.url().default('http://localhost:3000'),
-  SITE_NAME: z.string().min(1).default('PromptVC'),
+  SITE_NAME: z.string().min(1).default('VaultPrompt'),
 });
 
 const parsed = EnvSchema.safeParse(process.env);
