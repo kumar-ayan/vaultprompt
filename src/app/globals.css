@@ -14,8 +14,6 @@
   --card-bg: rgba(255, 255, 255, 0.03);
   --card-border: 1px solid rgba(255, 255, 255, 0.06);
   --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-
-  --font-inter: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 * {

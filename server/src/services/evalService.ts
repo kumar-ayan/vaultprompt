@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import DOMPurify from 'isomorphic-dompurify';
 import { unifiedChatCompletion } from './openaiClient';
 
 const JudgeResultSchema = z.object({
@@ -23,7 +24,7 @@ export class EvalService {
           },
           { timeout: 15000 }
         );
-        const actualOutput = generationCompletion.choices[0]?.message?.content?.trim();
+        const actualOutput = DOMPurify.sanitize(generationCompletion.choices[0]?.message?.content?.trim() || '');
         if (!actualOutput) {
           throw new Error(`Evaluation model ${model} returned an empty response`);
         }

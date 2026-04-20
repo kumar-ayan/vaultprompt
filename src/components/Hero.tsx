@@ -24,7 +24,7 @@ export default function Hero() {
       </p>
 
       <div className={styles.actions}>
-        <Link href="/demo" className={styles.btnPrimary}>See Live Demo</Link>
+        <Link href="/vault" className={styles.btnPrimary}>See Live Demo</Link>
         <Link href="/how-it-works" className={styles.btnSecondary}>See How It Works</Link>
       </div>
     </section>

@@ -1,7 +1,12 @@
 import { Analytics } from "@vercel/analytics/next";
 import './globals.css';
 import type { Metadata } from 'next';
-import Particles from '@/components/Particles';
+import { Inter } from 'next/font/google';
+import dynamic from 'next/dynamic';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+
+const Particles = dynamic(() => import('@/components/Particles'));
 
 export const metadata: Metadata = {
   title: 'VaultPrompt | Prompt Engineering DevTool & Versioning',
@@ -48,7 +53,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <body>
         <script
           type="application/ld+json"

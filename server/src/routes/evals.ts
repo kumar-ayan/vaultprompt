@@ -1,6 +1,7 @@
 import express from 'express';
 import { z } from 'zod';
 import { EvalService } from '../services/evalService';
+import { ImprovementService } from '../services/improvementService';
 import { asyncHandler } from '../lib/asyncHandler';
 
 const router = express.Router();
@@ -25,6 +26,18 @@ router.post('/run-direct', asyncHandler(async (req, res) => {
   );
   
   res.json(results);
+}));
+
+const ImprovePromptSchema = z.object({
+  content: z.string().min(1, 'Prompt content is required')
+});
+
+// POST /api/evals/improve
+// Master Prompt Engineer logic to rewrite and optimize a prompt
+router.post('/improve', asyncHandler(async (req, res) => {
+  const body = ImprovePromptSchema.parse(req.body);
+  const result = await ImprovementService.improvePrompt(body.content);
+  res.json(result);
 }));
 
 export default router;

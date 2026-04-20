@@ -9,7 +9,7 @@
     "lint": "eslint",
     "server:dev": "nodemon --exec ts-node server/src/index.ts",
     "server:build": "tsc -p server/tsconfig.json",
-    "test": "vitest run server/src/services/__tests__/promptService.test.ts server/src/lib/__tests__/request.test.ts src/utils/url.test.ts --pool=threads"
+    "test": "vitest run server/src/services/__tests__/*.test.ts src/utils/url.test.ts --pool=threads"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
@@ -22,6 +22,7 @@
     "express-rate-limit": "^8.3.2",
     "framer-motion": "^12.38.0",
     "helmet": "^8.1.0",
+    "isomorphic-dompurify": "^3.9.0",
     "next": "16.2.3",
     "ogl": "^1.0.11",
     "openai": "^6.34.0",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/diff": "^7.0.2",
+    "@types/dompurify": "^3.0.5",
     "@types/express": "^5.0.6",
     "@types/express-rate-limit": "^5.1.3",
     "@types/node": "^25.6.0",
