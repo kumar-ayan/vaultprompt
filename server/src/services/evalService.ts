@@ -92,7 +92,7 @@ export class EvalService {
       const result = JudgeResultSchema.safeParse(JSON.parse(cleaned));
       if (result.success) return result.data;
       
-      console.warn('Judge result validation failed, using fallback:', result.error.errors);
+      console.warn('Judge result validation failed, using fallback:', result.error.issues);
       return { score: 3, reason: 'Failed to parse high-quality judgement payload' };
     } catch (err) {
       console.error('Failed to parse judge result:', err);

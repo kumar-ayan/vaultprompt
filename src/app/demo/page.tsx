@@ -44,10 +44,10 @@ export default function DemoPage() {
       <aside className={styles.leftSidebar}>
         <Link href="/" className={styles.brand} style={{ textDecoration: 'none', cursor: 'pointer' }}>
           <div className={styles.logoIcon}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M12 8v4" />
-              <path d="M12 16h.01" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2l9 4.5v11L12 22l-9-4.5v-11L12 2z" />
+              <path d="M8 10l3 3-3 3" />
+              <path d="M13 16h3" />
             </svg>
           </div>
           <div className={styles.brandText}>
@@ -154,22 +154,30 @@ export default function DemoPage() {
                 {isSaving ? "Saving..." : selectedPromptId ? "Save Version" : "Create Save"}
               </button>
               <button 
-                className={styles.toolbarBtn} 
+                className={classNames(styles.toolbarBtn, isAnalyzing && styles.analyzingBtn)} 
                 onClick={handleAnalyze} 
                 disabled={isAnalyzing || isImproving}
                 style={{ opacity: (isAnalyzing || isImproving) ? 0.5 : 1 }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                {isAnalyzing ? (
+                  <svg className={styles.loadingIcon} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                ) : (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                )}
                 {isAnalyzing ? "Analyzing..." : "Analyze"}
               </button>
               <button 
-                className={styles.toolbarBtn} 
+                className={classNames(styles.toolbarBtn, isImproving && styles.improvingBtn)} 
                 onClick={handleImprove}
                 disabled={isAnalyzing || isImproving}
                 style={{ opacity: (isAnalyzing || isImproving) ? 0.5 : 1 }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-                {isImproving ? "Improving..." : "Improve"}
+                {isImproving ? (
+                  <svg className={styles.loadingIcon} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                ) : (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                )}
+                {isImproving ? "Fixing..." : "Improve"}
               </button>
               <button 
                 className={classNames(styles.toolbarBtn, styles.runBtn)}
