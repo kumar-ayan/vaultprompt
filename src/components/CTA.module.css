@@ -1,0 +1,51 @@
+.ctaSection {
+  background: #a481fa; /* Solid purple background from screenshot */
+  border-radius: 20px;
+  padding: 5rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #331566; /* Deep dark purple text */
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btnPrimary {
+  background: #3b0764; 
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: opacity 0.2s;
+}
+
+.btnPrimary:hover {
+  opacity: 0.9;
+}
+
+.btnSecondary {
+  background: transparent;
+  color: #3b0764;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid #3b0764;
+  transition: background 0.2s;
+}
+
+.btnSecondary:hover {
+  background: rgba(59, 7, 100, 0.05);
+}

@@ -1,0 +1,102 @@
+.container {
+  width: 100%;
+  max-width: 900px;
+  background: rgba(20, 20, 22, 0.6);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 0 auto 6rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  gap: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sidebarSkeleton {
+  height: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.sidebarSkeleton:nth-child(1) { width: 100%; }
+.sidebarSkeleton:nth-child(2) { width: 70%; background: rgba(255, 255, 255, 0.02); height: 0.75rem; }
+.sidebarSkeleton:nth-child(3) { width: 85%; background: rgba(255, 255, 255, 0.02); height: 0.75rem; }
+
+.editorBox {
+  flex-grow: 1;
+  position: relative;
+  background: rgba(10, 10, 10, 0.4);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  min-height: 250px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  width: 40%;
+  height: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.headerDots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.codeArea {
+  position: relative;
+  font-family: monospace;
+  font-size: 0.85rem;
+  line-height: 2;
+  color: #a1a1aa;
+  padding-left: 20px;
+  border-left: 2px solid var(--accent-purple-dark);
+}
+
+.efficiencyBox {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-align: right;
+  backdrop-filter: blur(4px);
+}
+
+.efficiencyLabel {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.efficiencyValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}

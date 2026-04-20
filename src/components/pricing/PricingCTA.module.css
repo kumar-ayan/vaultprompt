@@ -1,0 +1,63 @@
+.section {
+  padding: 2rem 0 5rem;
+}
+
+.card {
+  background: rgba(157, 122, 254, 0.05);
+  border: 1px solid rgba(157, 122, 254, 0.15);
+  border-radius: 1.125rem;
+  text-align: center;
+  padding: 3.5rem 2rem;
+}
+
+.title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.875rem;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  background: var(--btn-gradient);
+  color: white;
+  padding: 0.65rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.btnPrimary:hover {
+  opacity: 0.85;
+  color: white;
+}
+
+.btnSecondary {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+  padding: 0.65rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btnSecondary:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+}

@@ -1,0 +1,18 @@
+.hero {
+  text-align: center;
+  padding: 5rem 0 3.5rem;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}

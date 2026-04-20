@@ -1,0 +1,40 @@
+.footerWrapper {
+  width: 100%;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.links a:hover {
+  color: var(--text-secondary);
+}
+
+.social {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialIcon {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

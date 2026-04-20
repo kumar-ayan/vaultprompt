@@ -1,0 +1,156 @@
+.featuresSection {
+  margin-bottom: 8rem;
+}
+
+.heading {
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.gridSmall {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .grid, .gridSmall {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+}
+
+.cardSmall {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+}
+
+.cardIcon {
+  width: 40px;
+  height: 40px;
+  background: rgba(168, 85, 247, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--accent-purple);
+}
+
+.cardIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.cardDescription {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorations for cards */
+.chartMock {
+  position: absolute;
+  bottom: -1rem;
+  left: 2rem;
+  right: 2rem;
+  height: 150px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  gap: 4px;
+}
+
+.chartBar {
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px 2px 0 0;
+}
+
+.chartBar:nth-child(1) { height: 20%; }
+.chartBar:nth-child(2) { height: 35%; }
+.chartBar:nth-child(3) { height: 50%; }
+.chartBar:nth-child(4) { height: 40%; }
+.chartBar:nth-child(5) { height: 60%; background: var(--accent-purple-dark); }
+.chartBar:nth-child(6) { height: 80%; background: var(--accent-purple); }
+.chartBar:nth-child(7) { height: 65%; background: var(--accent-purple-dark); }
+.chartBar:nth-child(8) { height: 90%; background: var(--accent-purple); }
+.chartBar:nth-child(9) { height: 70%; }
+.chartBar:nth-child(10) { height: 85%; }
+
+
+.lockMock {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  opacity: 0.05;
+}
+.lockMock svg {
+  width: 140px;
+  height: 140px;
+}
+
+.linesMock {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: rgba(25, 25, 25, 0.8);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.line {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+.line:nth-child(1) { width: 100%; }
+.line:nth-child(2) { width: 80%; }
+.line:nth-child(3) { width: 90%; }
